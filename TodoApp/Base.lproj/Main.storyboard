@@ -1,24 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tT8-ag-4NZ">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--할일 목록-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="08B-uR-gOo">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcl-q0-yEp">
+                                <rect key="frame" x="309" y="753" width="54" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="추가"/>
+                                <connections>
+                                    <action selector="mainAddButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F2b-RG-ff1"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="08B-uR-gOo" secondAttribute="bottom" id="52W-f2-5pr"/>
+                            <constraint firstItem="08B-uR-gOo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ubg-W5-Ke8"/>
+                            <constraint firstItem="08B-uR-gOo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="agE-55-Irt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="08B-uR-gOo" secondAttribute="trailing" id="pds-tf-99t"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vcl-q0-yEp" secondAttribute="bottom" constant="30" id="srs-jf-U8D"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vcl-q0-yEp" secondAttribute="trailing" constant="30" id="ued-1i-iFJ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="할일 목록" id="ARY-iN-HpO"/>
+                    <connections>
+                        <outlet property="myTableView" destination="08B-uR-gOo" id="GcZ-Yo-jam"/>
+                        <segue destination="nMn-I3-2LL" kind="show" identifier="detailPageSegue" id="PXU-Da-RIy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="57.251908396946561" y="-2.1126760563380285"/>
+        </scene>
+        <!--타이틀제목-->
+        <scene sceneID="YlN-PX-3eO">
+            <objects>
+                <viewController id="nMn-I3-2LL" customClass="DetailViewController" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nic-Ct-E2m">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5V5-Pw-Jpd">
+                                <rect key="frame" x="20" y="203" width="353" height="515"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작성시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzJ-K6-9Gz">
+                                <rect key="frame" x="15" y="123" width="59" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작성시간라벨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUv-e7-e0Y">
+                                <rect key="frame" x="94" y="123" width="89" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7b-gx-ZXg">
+                                <rect key="frame" x="15" y="152" width="59" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료시간라벨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JC2-L8-PuQ">
+                                <rect key="frame" x="94" y="152" width="89" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0l-jy-yfR">
+                                <rect key="frame" x="239" y="753" width="54" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="삭제"/>
+                                <connections>
+                                    <action selector="deleteButton:" destination="nMn-I3-2LL" eventType="touchUpInside" id="4eb-Sc-oMA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezQ-yB-B8v">
+                                <rect key="frame" x="100" y="753" width="54" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="수정"/>
+                                <connections>
+                                    <action selector="editButton:" destination="nMn-I3-2LL" eventType="touchUpInside" id="2mA-UW-jhd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lgi-qZ-FF0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UUv-e7-e0Y" firstAttribute="top" secondItem="kzJ-K6-9Gz" secondAttribute="top" id="1f6-Mw-xz6"/>
+                            <constraint firstItem="ezQ-yB-B8v" firstAttribute="leading" secondItem="lgi-qZ-FF0" secondAttribute="leading" constant="100" id="3Oo-yZ-SW1"/>
+                            <constraint firstItem="JC2-L8-PuQ" firstAttribute="top" secondItem="W7b-gx-ZXg" secondAttribute="top" id="8qm-vZ-OVf"/>
+                            <constraint firstItem="kzJ-K6-9Gz" firstAttribute="top" secondItem="lgi-qZ-FF0" secondAttribute="top" constant="20" id="9At-sb-VdR"/>
+                            <constraint firstItem="W7b-gx-ZXg" firstAttribute="top" secondItem="kzJ-K6-9Gz" secondAttribute="bottom" constant="8" symbolic="YES" id="BxV-AQ-Rn7"/>
+                            <constraint firstItem="lgi-qZ-FF0" firstAttribute="bottom" secondItem="ezQ-yB-B8v" secondAttribute="bottom" constant="30" id="CzQ-be-2LC"/>
+                            <constraint firstItem="lgi-qZ-FF0" firstAttribute="bottom" secondItem="m0l-jy-yfR" secondAttribute="bottom" constant="30" id="EVS-zD-Pys"/>
+                            <constraint firstItem="lgi-qZ-FF0" firstAttribute="bottom" secondItem="5V5-Pw-Jpd" secondAttribute="bottom" constant="100" id="Gba-CY-Ps7"/>
+                            <constraint firstItem="JC2-L8-PuQ" firstAttribute="leading" secondItem="W7b-gx-ZXg" secondAttribute="trailing" constant="20" id="KHc-DP-yxc"/>
+                            <constraint firstItem="UUv-e7-e0Y" firstAttribute="leading" secondItem="kzJ-K6-9Gz" secondAttribute="trailing" constant="20" id="Le5-OA-GCI"/>
+                            <constraint firstItem="W7b-gx-ZXg" firstAttribute="leading" secondItem="kzJ-K6-9Gz" secondAttribute="leading" id="Rev-2t-0z2"/>
+                            <constraint firstItem="5V5-Pw-Jpd" firstAttribute="top" secondItem="lgi-qZ-FF0" secondAttribute="top" constant="100" id="TYQ-jK-9UD"/>
+                            <constraint firstItem="lgi-qZ-FF0" firstAttribute="trailing" secondItem="m0l-jy-yfR" secondAttribute="trailing" constant="100" id="UAc-1t-blA"/>
+                            <constraint firstItem="kzJ-K6-9Gz" firstAttribute="leading" secondItem="lgi-qZ-FF0" secondAttribute="leading" constant="15" id="YxR-b2-zcj"/>
+                            <constraint firstItem="5V5-Pw-Jpd" firstAttribute="trailing" secondItem="lgi-qZ-FF0" secondAttribute="trailing" constant="-20" id="kOQ-VX-TJ0"/>
+                            <constraint firstItem="5V5-Pw-Jpd" firstAttribute="leading" secondItem="lgi-qZ-FF0" secondAttribute="leading" constant="20" id="qhu-qf-ZVi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="타이틀제목" style="editor" id="Tct-7w-85I"/>
+                    <connections>
+                        <outlet property="contentLabel" destination="5V5-Pw-Jpd" id="oAQ-Qc-sO4"/>
+                        <outlet property="createdDateLabel" destination="UUv-e7-e0Y" id="qmg-Qy-tcQ"/>
+                        <outlet property="doneDateLabel" destination="JC2-L8-PuQ" id="cfa-a7-FZy"/>
+                        <outlet property="doneTimeLabel" destination="W7b-gx-ZXg" id="1TX-xW-RoW"/>
+                        <outlet property="navBar" destination="Tct-7w-85I" id="r6x-3R-6W2"/>
+                        <outlet property="titleLabel" destination="5V5-Pw-Jpd" id="v9e-tc-UUm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ERE-ly-AtG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085" y="-2"/>
+        </scene>
+        <!--완료 목록-->
+        <scene sceneID="1j2-44-9yi">
+            <objects>
+                <viewController id="lx6-XK-MUl" customClass="doneListCon" customModule="TodoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dG9-n9-NyP">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OH0-vu-VGV">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2Dn-8b-oYH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2Dn-8b-oYH" firstAttribute="bottom" secondItem="OH0-vu-VGV" secondAttribute="bottom" id="3De-bu-5JH"/>
+                            <constraint firstItem="OH0-vu-VGV" firstAttribute="leading" secondItem="2Dn-8b-oYH" secondAttribute="leading" id="8O5-FA-HCu"/>
+                            <constraint firstItem="OH0-vu-VGV" firstAttribute="top" secondItem="2Dn-8b-oYH" secondAttribute="top" id="N4T-vv-0rY"/>
+                            <constraint firstItem="2Dn-8b-oYH" firstAttribute="trailing" secondItem="OH0-vu-VGV" secondAttribute="trailing" id="aBP-CB-YJU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="완료 목록" id="xEP-2h-abN"/>
+                    <connections>
+                        <outlet property="doneListView" destination="OH0-vu-VGV" id="ppz-Hc-M5u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="epq-ql-ebv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="57" y="699"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fuU-11-9DG">
+            <objects>
+                <navigationController id="tT8-ag-4NZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9NG-5W-27k">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fVN-41-szz" kind="relationship" relationship="rootViewController" id="nhW-w6-kT9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="30D-of-O42" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2042" y="-2"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="teX-KF-Ycd">
+            <objects>
+                <viewController id="fVN-41-szz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gqe-IZ-uSS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="Mxy-E6-yWG">
+                                <rect key="frame" x="153" y="370.33333333333331" width="87.333333333333314" height="111.66666666666669"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEP-1r-KnX">
+                                        <rect key="frame" x="0.0" y="0.0" width="87.333333333333329" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="할일 목록"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="ymh-2d-ibI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3y0-Ob-CCI">
+                                        <rect key="frame" x="0.0" y="77.333333333333371" width="87.333333333333329" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="완료 목록"/>
+                                        <connections>
+                                            <segue destination="lx6-XK-MUl" kind="show" id="1XN-Lb-uwi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="otZ-lf-TX2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mxy-E6-yWG" firstAttribute="centerY" secondItem="Gqe-IZ-uSS" secondAttribute="centerY" id="6sc-Mu-QS4"/>
+                            <constraint firstItem="Mxy-E6-yWG" firstAttribute="centerX" secondItem="Gqe-IZ-uSS" secondAttribute="centerX" id="dwS-VO-nOk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="dQe-I9-6Sh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nk0-NF-jHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-828" y="-2"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
